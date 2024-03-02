@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Set padding to the body */
+    body {
+      padding-top: 0px; /* 56px is the height of the navbar */
+      background-color: #f8f9fa;
+    }
+
+    /* Set height of the navbar */
+    .navbar {
+      height: 56px;
+      background-color: #343a40; /* dark gray */
+    }
+
+    /* Style the brand/logo */
+    .navbar-brand {
+      color: #ffffff !important; /* white */
+    }
+
+    /* Style for the sidebar */
+    .sidenav {
+      height: 100%;
+      width: 200px; /* Adjust width as needed */
+      position: fixed;
+      z-index: 1;
+      top: 56px; /* height of the navbar */
+      left: 0;
+      background-color:  #03C5BF ; /* blue */
+      padding-top: 20px;
+    }
+
+    /* Style the links inside the sidebar */
+    .sidenav a {
+      padding: 13px 5px 13px 12px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #ffffff; /* white */
+      display: block;
+    }
+
+    /* Change color on hover */
+    .sidenav a:hover {
+      background-color:#029793 ; /* darker blue */
+    }
+
+    /* Style for the dashboard content */
+    .content {
+      margin-left: 200px; /* width of the sidebar */
+      padding: 20px;
+    }
+
+    /* Style for the user info box */
+    .user-info {
+      background-color: #ffffff; /* white */
+      border: 1px solid #dee2e6; /* gray */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Style for headings */
+    h1, h2 {
+      color: #343a40; /* dark gray */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <h3 class="navbar-brand">VolunMatch</h3>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidenav">
+<a th:href="'/volun_home/' + ${volunteer.id}">Dashboard</a>
+<a th:href="@{'/volun_update/' + ${volunteer.id}}">Update</a>
+
+ <a th:href="@{'/volun_leave/' + ${volunteer.id}}">Leave</a>
+  <a href="/logout">Logout</a>
+
+
+</div>
+
+<!-- Page Content -->
+<div class="content">
+  <div class="user-info">
+    <h2>Your Information</h2><br>
+  
+     
+      <p><strong>Name:</strong> <span th:text="${volunteer.name}"></span>
+    
+     <p><strong>Gender:</strong>  <span th:text="${volunteer.gender}"></span>
+     <p><strong>Email:</strong>  <span th:text="${volunteer.email}"></span>
+    
+      <p><strong>Phone:</strong> <span th:text="${volunteer.phone}"></span>
+      <p><strong>Available Days:</strong> <span th:text="${volunteer.availability}"></span>
+      <p><strong>Preferred Fields:</strong> <span th:text="${volunteer.preferences}"></span>
+      <p><strong>Experience:</strong> <span th:text="${volunteer.hasExperience ? 'Yes' : 'No'}"></span>
+      
+      
+      
+    
+  </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

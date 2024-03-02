@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Set padding to the body */
+    body {
+      padding-top: 0px; /* 56px is the height of the navbar */
+      background-color: #f8f9fa;
+    }
+
+    /* Set height of the navbar */
+    .navbar {
+      height: 56px;
+      background-color: #343a40; /* dark gray */
+    }
+
+    /* Style the brand/logo */
+    .navbar-brand {
+      color: #ffffff !important; /* white */
+    }
+
+    /* Style for the sidebar */
+     .sidenav {
+      height: 100%;
+      width: 200px; /* Adjust width as needed */
+      position: fixed;
+      z-index: 1;
+      top: 56px; /* height of the navbar */
+      left: 0;
+      background-color:  #03C5BF ; /* blue */
+      padding-top: 20px;
+    }
+
+    /* Style the links inside the sidebar */
+    .sidenav a {
+      padding: 13px 5px 13px 12px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #ffffff; /* white */
+      display: block;
+    }
+
+    /* Change color on hover */
+    .sidenav a:hover {
+      background-color:#029793 ; /* darker blue */
+    }
+
+    /* Style for the dashboard content */
+    .content {
+      margin-left: 200px; /* width of the sidebar */
+      padding: 20px;
+    }
+
+    /* Style for the user info box */
+    .user-info {
+      background-color: #ffffff; /* white */
+      border: 1px solid #dee2e6; /* gray */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Style for headings */
+    h1, h2 {
+      color: #343a40; /* dark gray */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <h3 class="navbar-brand">VolunMatch</h3>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidenav">
+<a th:href="'/volun_home/' + ${volunteer.id}">Dashboard</a>
+<a th:href="@{'/volun_update/' + ${volunteer.id}}">Update</a>
+
+<a th:href="@{'/volun_leave/' + ${volunteer.id}}">Leave</a>
+  <a href="/logout">Logout</a>
+ 
+</div>
+
+<!-- Page Content -->
+<div class="content">
+ <div class="user-info">
+  <h2>Update Your Information</h2>
+ <!-- Update Your Profile Form -->
+<form action="/update_profile" method="post" th:object="${volunteer}">
+    <!-- Availability Dates -->
+    <div class="mb-3">
+        <label>Available Days:</label><br>
+        <div class="form-check form-check-inline" th:each="dayOfWeek : ${T(com.volunteerManagement.entity.Volunteer$DayOfWeek).values()}">
+            <input class="form-check-input" type="checkbox" th:id="'availability' + ${dayOfWeek}" 
+                   th:name="availability" th:value="${dayOfWeek}" 
+                   th:checked="${volunteer.availability != null and volunteer.availability.contains(dayOfWeek)}">
+            <label class="form-check-label" th:for="'availability' + ${dayOfWeek}" 
+                   th:text="${dayOfWeek}"></label>
+        </div>
+    </div>
+
+    <!-- Preference Fields -->
+    <div class="mb-3">
+        <label>Preferred Fields:</label><br>
+        <div class="form-check form-check-inline" th:each="preference : ${T(com.volunteerManagement.entity.Volunteer$Preference).values()}">
+            <input class="form-check-input" type="checkbox" th:id="'preference' + ${preference}" 
+                   th:name="preferences" th:value="${preference}" 
+                   th:checked="${volunteer.preferences != null and volunteer.preferences.contains(preference)}">
+            <label class="form-check-label" th:for="'preference' + ${preference}" 
+                   th:text="${preference}"></label>
+        </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="mb-3">
+        <label>Experience:</label><br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="experienceYes" name="hasExperience" value="true" th:checked="${volunteer.hasExperience}">
+            <label class="form-check-label" for="experienceYes">Yes</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="experienceNo" name="hasExperience" value="false" th:checked="${!volunteer.hasExperience}">
+            <label class="form-check-label" for="experienceNo">No</label>
+        </div>
+    </div>
+ <input type="hidden" th:field="*{id}" />
+ 
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+</div>
+ </div>
+
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

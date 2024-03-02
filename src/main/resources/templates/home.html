@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VolunMatch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Change font family for the whole page */
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .navbar{
+        background-color: #03C5BF ;
+        }
+        .navbar-brand {
+            font-size: 24px; /* Larger font size for brand */
+            font-weight: bold;
+            color:#fff; /* Bold font weight for brand */
+            padding-top:10px;
+            
+        }
+        .navbar-nav .nav-link {
+            font-size: 18px; /* Larger font size for nav links */
+            color: #fff; /* White text color */
+            transition: 0.3s; /* Smooth transition on hover */
+        }
+        .navbar-nav .nav-link:hover {
+           color:#029793 ; /* Yellow text color on hover */
+        }
+        .jumbotron {
+            background-color: #03C5BF; /* Light gray background for jumbotron */
+            color: #fff; /* Dark text color */
+            padding: 20px; /* Add padding to jumbotron */
+            border-radius: 15px; /* Rounded corners */
+            display: flex; /* Make content parallel */
+            align-items: center; /* Center items vertically */
+            gap: 20px; /* Add space between elements */
+        }
+        .jumbotron-content {
+            flex: 1; /* Take remaining space */
+        }
+        .jumbotron-text {
+            font-size: 16px; /* Smaller font size for text */
+        }
+        .jumbotron img {
+            max-width: 100%; /* Make image responsive */
+            border-radius: 10px; /* Rounded corners */
+        }
+        .jumbotron-box {
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow content */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg ">
+    <div class="container">
+        <p class="navbar-brand" href="#">VolunMatch</p>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="list">Available Volunteers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="select">Generate Candidates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin_logout">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="jumbotron-box">
+        <div class="jumbotron">
+            <div class="jumbotron-content">
+                <h2 class="display-5">Welcome to VolunMatch</h2>
+                <div class="jumbotron-text">
+                    <p class="lead">Welcome to the Admin Dashboard of VolunMatch! As the administrator,
+                     you play a crucial role in facilitating volunteer engagement and 
+                     matching suitable candidates for various events.</p>
+                    <hr class="my-2">
+                    <p>From this dashboard, you have access to a comprehensive overview of
+                     registered volunteers, allowing you to review their personal information,
+                      available days, preferred fields, and have experience or not.</p>
+                    <p>With intuitive navigation and user-friendly controls, 
+                    you can effortlessly set criteria for generating volunteers based on event days,
+                     fields of interest, and required expertise.</p>
+                     </p>
+                    <p>Whether you're planning a technology conference, cultural festival, or community outreach program, VolunMatch empowers you to find the right volunteers for the job, making a meaningful impact in your organization's initiatives.</p>
+                    
+                </div>
+            </div>
+            <img src="/images/homeimg.jpg" alt="Home Image">
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
